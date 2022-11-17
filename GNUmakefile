@@ -30,7 +30,7 @@ CPPFLAGS ?=
 NASMFLAGS ?= -F dwarf -g
  
 # User controllable linker flags. We set none by default.
-LDFLAGS ?=
+LDFLAGS ?= --allow-multiple-definition
  
 # Internal C flags that should not be changed by the user.
 override CFLAGS +=       \

@@ -1,3 +1,4 @@
 limine/
 out/
-src/*.out
+src/*.o
+src/*.d
