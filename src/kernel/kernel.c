@@ -30,8 +30,8 @@ void _start(void) {
     // We should now be able to call the Limine terminal to print out
     // a simple "Hello World" to screen.
     struct limine_terminal *terminal = terminal_request.response->terminals[0];
-    // terminal_request.response->write(terminal, "[ OK ] Initialized terminal", 11);
-    terminal_request.response->write(terminal, "Welcome to blahajOS!\n", 22);
+    terminal_request.response->write(terminal, "[ OK ] Initialized terminal\n", 29);
+    terminal_request.response->write(terminal, "Welcome to howlOS!\n", 20);
 
 	// Initialize serial
 

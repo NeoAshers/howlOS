@@ -1,6 +1,11 @@
+# Versioning
+CODENAME := wolf_beta
+VER := 0.1.0
+
+
 # This is the name that our final kernel executable will have.
 # Change as needed.
-override KERNEL := blahajos.elf
+override KERNEL := howl-$(CODENAME).elf
  
 # Convenience macro to reliably declare overridable command variables.
 define DEFAULT_VAR =
@@ -95,15 +100,15 @@ limine:
 iso:
 	rm -rf out/iso
 	mkdir out/iso 
-	cp -v out/blahajos.elf config/limine.cfg limine/limine.sys limine/limine-cd.bin limine/limine-cd-efi.bin out/iso
+	cp -v out/howl-$(CODENAME).elf config/limine.cfg limine/limine.sys limine/limine-cd.bin limine/limine-cd-efi.bin out/iso
 
 	xorriso -as mkisofs -b limine-cd.bin \
         -no-emul-boot -boot-load-size 4 -boot-info-table \
         --efi-boot limine-cd-efi.bin \
         -efi-boot-part --efi-boot-image --protective-msdos-label \
-        out/iso -o out/blahaj.iso
+        out/iso -o out/howl-$(VER)-$(CODENAME).iso
 
-	./limine/limine-deploy out/blahaj.iso
+	./limine/limine-deploy out/howl-$(VER)-$(CODENAME).iso
 
 # Include header dependencies.
 -include $(HEADER_DEPS)
@@ -128,4 +133,4 @@ clean:
 
 run:
 	@echo 
-	qemu-system-x86_64 -cdrom out/blahaj.iso $(QEMUFLAGS)
+	qemu-system-x86_64 -cdrom out/howl-$(VER)-$(CODENAME).iso $(QEMUFLAGS)
